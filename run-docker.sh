@@ -6,8 +6,8 @@ REP_SIZE=64
 WINDOW_SIZE=5
 WORKERS=1
 
-rm -rf logs &&
-mkdir -p logs &&
+DATE=`date '+%d-%m-%Y_%H-%M-%S'`
+mkdir -p share/$DATE &&
 docker run -v `pwd`/share:/usr/share deepwalk:latest \
 python /usr/deepwalk/deepwalk \
 --format $FORMAT \
@@ -16,15 +16,18 @@ python /usr/deepwalk/deepwalk \
 --window-size $WINDOW_SIZE \
 --workers $WORKERS \
 --input /usr/share/$INPUT \
---output /usr/share/$OUTPUT > logs/stdout 2> logs/stderr && \
-DW_STDOUT=`cat logs/stdout` && \
-DW_STDERR=`cat logs/stderr` && \
+--output /usr/share/$DATE/$OUTPUT > share/$DATE/stdout 2> share/$DATE/stderr && \
+DW_STDOUT=`cat share/$DATE/stdout` && \
+DW_STDERR=`cat share/$DATE/stderr` && \
 curl -s --user 'api:key-xxx' \
     https://api.mailgun.net/v3/xxx.mailgun.org/messages \
     -F from='Mailgun Sandbox <postmaster@xxx.mailgun.org>' \
     -F to='Kilian Ollivier <xxx@xxx.com>' \
     -F subject='Deepwalk' \
     -F text="The computation of $OUTPUT just ended.
+    
+directory :
+$DATE    
 
 stdout : 
 $DW_STDOUT
