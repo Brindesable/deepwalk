@@ -5,10 +5,7 @@ forked from https://github.com/phanein/deepwalk
 
 Launch deepwalk in a docker image, then launch an email when the computation is finished.
 
-* Create a shared volume in the root directory :
-``mkdir share``
-
-* Put the graph in shared
+* Put the graph in shared directory
 ``share/graph.edgelist``
 
 * Build the docker image :
