@@ -30,7 +30,7 @@ WORKERS=$WORKERS" && \
 echo $PARAMETERS > share/$DATE/parameters && \
 DW_STDOUT=`cat share/$DATE/stdout` && \
 DW_STDERR=`cat share/$DATE/stderr` && \
-ccurl -s --user 'api:key-xxx' \
+curl -s --user 'api:key-xxx' \
     https://api.mailgun.net/v3/xxx.mailgun.org/messages \
     -F from='Mailgun Sandbox <postmaster@xxx.mailgun.org>' \
     -F to='Kilian Ollivier <xxx@xxx.com>' \
