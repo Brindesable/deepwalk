@@ -1,9 +1,11 @@
-INPUT=karate.adjlist
-FORMAT=adjlist
+INPUT=blog.edgelist
+FORMAT=edgelist
 OUTPUT=karate.ebd
 NB_WALKS=10
 REP_SIZE=64
-WINDOW_SIZE=5
+WINDOW_SIZE=10
+WALK_LENGTH=80
+UNDIRECTED=True
 WORKERS=1
 
 DATE=`date '+%d-%m-%Y_%H-%M-%S'` && \
@@ -14,12 +16,16 @@ python /usr/deepwalk/deepwalk \
 --number-walks $NB_WALKS \
 --representation-size $REP_SIZE \
 --window-size $WINDOW_SIZE \
+--undirected $UNDIRECTED \
+--walk-length $WALK_LENGTH \
 --workers $WORKERS \
 --input /usr/share/$INPUT \
 --output /usr/share/$DATE/$OUTPUT > share/$DATE/stdout 2> share/$DATE/stderr && \
 PARAMETERS="NB_WALKS=$NB_WALKS
 REP_SIZE=$REP_SIZE
 WINDOW_SIZE=$WINDOW_SIZE
+WALK_LENGTH=$WALK_LENGTH
+UNDIRECTED=$UNDIRECTED
 WORKERS=$WORKERS" && \
 echo $PARAMETERS > share/$DATE/parameters && \
 DW_STDOUT=`cat share/$DATE/stdout` && \
