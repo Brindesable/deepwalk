@@ -1,0 +1,61 @@
+{
+	"--format": {
+		"type": "list",
+		"opions": ["edgelist", "adjlist"]
+	},
+    "--input": {
+        "type": "file"
+    },
+    "-l": {
+        "type": "string",
+        "default": "default"
+    },
+    "--matfile-variable-name": {
+        "type": "string",
+        "default": "default"
+    },
+    "--max-memory-data-size": {
+        "type": "string",
+        "default": "default"
+    },
+    "--number-walks": {
+        "type": "int",
+        "min": 1,
+        "max": 128
+    },
+    "--output": {
+        "type": "string"
+    },
+    "--representation-size": {
+        "type": "int",
+        "min": 1,
+        "max": 128
+    },
+    "--seed": {
+        "type": "string",
+        "default": "default"
+    },
+    "--undirected": {
+        "type": "boolean",
+        "default": "True"
+    },
+    "--vertex-freq-degree": {
+        "type": "string",
+        "default": "default"
+    },
+    "--walk-length": {
+        "type": "int",
+        "min": 1,
+        "max": 128
+    },
+    "--window-size": {
+        "type": "int",
+        "min": 0,
+        "max": 128
+    },
+    "--workers": {
+        "type": "int",
+        "min": 0,
+        "max": 128
+    }
+}
